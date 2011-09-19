@@ -12,10 +12,8 @@
     var basicSearch = [];
     var localModelPrefix = {};
 
-
-
     //     var OptionStructure = {
-    //        elementType: 'ins',
+    //        elementType: 'select',
     //        class: 'className',
     //        inputType: 'input type'    // this is a short cut for using elementType, attrName & attrValue for <input type='xxx'>
     //        atrrName: 'atrrName',      // required
