@@ -92,19 +92,20 @@
         if (inputType) {
             var testElement = 'input';
             var testAttr = 'type';
+            var testAttrValue = inputType;
         }
         else {
             testElement = singleOption.elementType;
             testAttr = singleOption.attrName;
+            testAttrValue = singleOption.attrValue;
         };
 
         if (testElement) {
             var elementTypeMatch = $(element).is(testElement);
         };
         if (testAttr) {
-            var attrFound = testAttr === $(element).attr(testAttr);
+            var attrFound = testAttrValue === $(element).attr(testAttr);
         };
-
 
         var testClass = singleOption.className;
         if (testClass) {
