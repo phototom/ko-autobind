@@ -65,9 +65,9 @@
         attrValue: '__RequestVerificationToken',
         noBindToThisValue: true
     }]
-
     function createBinding(element, nameContents, bindingType) {
         var databindContents = $(element).attr('data-bind');
+        var localDataBinding = bindingType + ': ' + localModelPrefix + nameContents;
         if (databindContents) {
 
             // look for binding type already present
@@ -79,10 +79,12 @@
             // binding type already present, so skip step
             if (patternPresent >= 0)
                 return;
-
+            databindContents = localDataBinding + ', ' + databindContents;
+        }
+        else {
+            databindContents = localDataBinding;
         }
 
-        databindContents = bindingType + ': ' + localModelPrefix + nameContents + ' ';
         $(element).attr('data-bind', databindContents);
     };
 
@@ -98,18 +100,20 @@
 
         if (inputType) {
             var testElement = 'input';
-            var testAttr = 'type';
-            var testAttrValue = inputType;
         }
         else {
             testElement = singleOption.elementType;
-
         };
+
+
         testAttr = singleOption.attrName;
         testAttrValue = singleOption.attrValue;
 
         if (testElement) {
             var elementTypeMatch = $(element).is(testElement);
+            if (elementTypeMatch && inputType) {
+                elementTypeMatch = $(element).attr('type') === inputType;
+            }
         };
 
 
